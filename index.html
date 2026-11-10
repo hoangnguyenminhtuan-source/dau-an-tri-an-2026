@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c32">
+  <title>Dấu ấn tri ân – 20/11/2026 | Cao đẳng Đắk Lắk</title>
+  <meta name="description" content="Không gian gửi lời tri ân thầy cô của Đoàn trường Cao đẳng Đắk Lắk.">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root{--green:#174b3c;--green2:#236b54;--gold:#d7a94b;--cream:#fffaf0;--ink:#26352f;--muted:#68766f;--line:#e8e4d9;--white:#fff;--red:#a83d36}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}
+    .top{background:var(--green);color:white;padding:13px 5vw;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{font-weight:800;letter-spacing:.04em}.top small{opacity:.8}.nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav button,.btn{border:0;border-radius:999px;padding:10px 16px;background:var(--green2);color:white;font-weight:650}
+    .nav button{background:transparent;border:1px solid #ffffff55}.nav button:hover,.btn:hover{filter:brightness(1.08)}
+    .btn.gold{background:var(--gold);color:#2b281f}.btn.light{background:#edf3ee;color:var(--green)}.btn.danger{background:var(--red)}
+    main{max-width:1180px;margin:auto;padding:26px 20px 60px}.hero{background:linear-gradient(125deg,#123c32,#2c7259);color:white;border-radius:24px;padding:clamp(28px,6vw,66px);position:relative;overflow:hidden}
+    .hero:after{content:"20/11";position:absolute;right:3%;bottom:-30px;font-size:clamp(90px,18vw,210px);font-weight:900;color:#ffffff0c;pointer-events:none}
+    .eyebrow{color:#f1d99e;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+    h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.08;margin:14px 0}.hero p{max-width:650px;color:#e4eee8;font-size:1.08rem}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.section{margin-top:34px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    h2{color:var(--green);margin:0 0 12px;font-size:1.55rem}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+    .card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 20px #293d3010}.activity{min-height:155px}.activity .emoji{font-size:1.7rem}
+    .wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.note{background:#fff3cf;border-radius:4px 15px 15px 15px;padding:20px;box-shadow:0 6px 16px #4c3b1810;transform:rotate(-.4deg);min-height:150px}
+    .note:nth-child(3n){background:#e8f3e9;transform:rotate(.5deg)}.note:nth-child(3n+2){background:#f8e8e8}
+    .note p{white-space:pre-wrap;margin:8px 0 18px}.note footer{font-size:.85rem;color:#68766f}
+    .panel{max-width:760px;margin:22px auto;background:white;border:1px solid var(--line);border-radius:18px;padding:24px}
+    .field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:650;font-size:.92rem}.field input,.field select,.field textarea{width:100%;border:1px solid #d9dfd9;border-radius:10px;padding:11px 12px;background:#fff}.field textarea{min-height:115px;resize:vertical}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hidden{display:none!important}.notice{padding:12px 14px;border-radius:12px;background:#edf3ee;color:var(--green);margin:12px 0}.error{background:#fff0ed;color:#9b352c}
+    .pill{display:inline-block;border-radius:999px;padding:4px 10px;font-size:.8rem;background:#edf3ee;color:var(--green);margin:3px 4px 3px 0}.adminbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .item{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid var(--line);padding:14px 0}.item:last-child{border:0}.item p{margin:5px 0}.item-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .item-actions button{padding:7px 11px;font-size:.85rem}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.stat strong{display:block;font-size:1.8rem;color:var(--green)}
+    .media{max-width:100%;max-height:360px;border-radius:12px;margin-top:10px}.footer{text-align:center;color:var(--muted);padding:28px 15px;border-top:1px solid var(--line);font-size:.9rem}
+    .small{font-size:.85rem}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar select{padding:9px;border:1px solid var(--line);border-radius:9px;background:white}
+    .slide{min-height:70vh;display:grid;place-items:center;text-align:center;background:#123c32;color:white;border-radius:20px;padding:30px}.slide h2{color:#f1d99e;font-size:clamp(1.7rem,4vw,3rem)}.slide p{font-size:clamp(1.2rem,2.7vw,2rem);max-width:900px;white-space:pre-wrap}
+    @media(max-width:650px){.row2{grid-template-columns:1fr}.top{align-items:flex-start}.item{display:block}.item-actions{margin-top:10px}}
+  </style>
+</head>
+<body>
+<header class="top">
+  <div><div class="brand">ĐOÀN TRƯỜNG CAO ĐẲNG ĐẮK LẮK</div><small>DẤU ẤN TRI ÂN · 20/11/2026</small></div>
+  <nav class="nav" aria-label="Điều hướng">
+    <button onclick="showPage('home')">Trang chủ</button>
+    <button onclick="showPage('wall')">Bức tường Tri Ân</button>
+    <button onclick="showPage('gallery')">Khoảnh khắc</button>
+    <button onclick="showPage('submit')">Gửi tri ân</button>
+    <button id="accountNav" onclick="showPage(currentUser?'mine':'login')">Đăng nhập</button>
+  </nav>
+</header>
+<main>
+  <section id="page-home">
+    <div class="hero">
+      <div class="eyebrow">Cao đẳng Đắk Lắk · Ngày Nhà giáo Việt Nam</div>
+      <h1>DẤU ẤN TRI ÂN</h1>
+      <p>Người gieo tri thức – Người giữ yêu thương. Gửi một lời chúc, chia sẻ một khoảnh khắc, lưu giữ tình cảm dành tặng thầy cô nhân ngày 20/11.</p>
+      <div class="actions"><button class="btn gold" onclick="showPage('submit')">GỬI LỜI TRI ÂN</button><button class="btn light" onclick="showPage('wall')">XEM BỨC TƯỜNG TRI ÂN</button></div>
+    </div>
+    <section class="section">
+      <h2>Cùng tạo nên dấu ấn tri ân</h2>
+      <div class="grid">
+        <article class="card activity"><div class="emoji">💌</div><h3>Bức tường Tri Ân</h3><p class="muted">Gửi lời chúc chân thành đến thầy cô.</p></article>
+        <article class="card activity"><div class="emoji">🎬</div><h3>Video sáng tạo</h3><p class="muted">Chia sẻ video hoặc đường dẫn TikTok.</p></article>
+        <article class="card activity"><div class="emoji">💐</div><h3>Sắc hoa tri ân</h3><p class="muted">Lưu lại tác phẩm và ý tưởng cắm hoa.</p></article>
+        <article class="card activity"><div class="emoji">📸</div><h3>Khoảnh khắc bên thầy cô</h3><p class="muted">Chia sẻ hình ảnh đẹp trong mái trường.</p></article>
+        <article class="card activity"><div class="emoji">✉️</div><h3>Lá thư tri ân</h3><p class="muted">Gửi gắm những điều muốn nói.</p></article>
+      </div>
+    </section>
+    <section class="section"><div class="section-head"><h2>Lời tri ân mới nhất</h2><button class="btn light" onclick="showPage('wall')">Xem tất cả</button></div><div id="homeWall" class="wall"></div></section>
+  </section>
+
+  <section id="page-wall" class="hidden">
+    <div class="section-head"><div><h2>Bức tường Tri Ân</h2><p class="muted">Những lời chúc đã được Ban tổ chức duyệt và công khai.</p></div><button class="btn" onclick="showPage('submit')">Gửi lời chúc</button></div>
+    <div id="wall" class="wall"></div>
+  </section>
+
+  <section id="page-gallery" class="hidden">
+    <h2>Thư viện khoảnh khắc</h2><p class="muted">Hình ảnh và video đã được Ban tổ chức duyệt.</p>
+    <div id="gallery" class="grid"></div>
+  </section>
+
+  <section id="page-register" class="hidden">
+    <div class="panel"><h2>Đăng ký tài khoản</h2><div id="registerMsg"></div>
+      <form id="registerForm">
+        <div class="field"><label>Họ và tên</label><input name="full_name" required maxlength="120"></div>
+        <div class="row2"><div class="field"><label>Mã học sinh/sinh viên</label><input name="student_code" required maxlength="40"></div><div class="field"><label>Email</label><input name="email" type="email" required></div></div>
+        <div class="row2"><div class="field"><label>Khoa</label><input name="faculty" required placeholder="Nhập khoa"></div><div class="field"><label>Lớp</label><input name="class_name" required placeholder="Nhập lớp"></div></div>
+        <div class="field"><label>Chi đoàn</label><input name="union_name" required placeholder="Nhập chi đoàn"></div>
+        <div class="row2"><div class="field"><label>Mật khẩu</label><input name="password" type="password" minlength="8" required></div><div class="field"><label>Xác nhận mật khẩu</label><input name="confirm_password" type="password" minlength="8" required></div></div>
+        <label class="small"><input type="checkbox" required> Tôi xác nhận thông tin đăng ký chính xác.</label>
+        <p><button class="btn" type="submit">Tạo tài khoản</button> <button class="btn light" type="button" onclick="showPage('login')">Đã có tài khoản?</button></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="page-login" class="hidden">
+    <div class="panel"><h2>Đăng nhập</h2><div id="loginMsg"></div>
+      <form id="loginForm"><div class="field"><label>Email</label><input name="email" type="email" required></div><div class="field"><label>Mật khẩu</label><input name="password" type="password" required></div><button class="btn" type="submit">Đăng nhập</button> <button class="btn light" type="button" onclick="showPage('register')">Đăng ký</button></form>
+    </div>
+  </section>
+
+  <section id="page-submit" class="hidden">
+    <div class="panel"><h2>Gửi nội dung tri ân</h2><p class="muted">Nội dung sẽ ở trạng thái chờ duyệt. Chỉ nội dung được duyệt mới xuất hiện công khai.</p><div id="submitMsg"></div>
+      <form id="submissionForm">
+        <div class="field"><label>Hoạt động</label><select name="activity" required><option value="Bức tường Tri Ân">Bức tường Tri Ân – Lời chúc</option><option value="Video sáng tạo">Video sáng tạo – TikTok</option><option value="Sắc hoa tri ân">Cuộc thi cắm hoa</option><option value="Khoảnh khắc bên thầy cô">Khoảnh khắc bên thầy cô</option><option value="Lá thư tri ân">Lá thư tri ân</option></select></div>
+        <div class="field"><label>Tên thầy/cô (không bắt buộc)</label><input name="teacher_name" maxlength="120" placeholder="Ví dụ: Cô Nguyễn Thị A"></div>
+        <div class="field"><label>Tiêu đề</label><input name="title" required maxlength="180" placeholder="Đặt tiêu đề cho nội dung của bạn"></div>
+        <div class="field"><label>Lời chúc / thông điệp / ý tưởng</label><textarea name="message" maxlength="5000" placeholder="Viết lời tri ân của bạn..."></textarea></div>
+        <div class="field"><label>Ảnh hoặc video (tùy chọn)</label><input name="media" type="file" accept="image/jpeg,image/png,image/webp,video/mp4"><span class="small muted">Khuyến nghị ảnh JPG/PNG/WEBP và video MP4. Giới hạn mặc định 50 MB.</span></div>
+        <div class="field"><label>Đường dẫn TikTok / video ngoài (tùy chọn)</label><input name="external_url" type="url" placeholder="https://..."></div>
+        <label class="small"><input type="checkbox" name="consent" required> Tôi có quyền sử dụng nội dung đã gửi và đồng ý để Ban tổ chức kiểm duyệt, công khai nội dung sau khi được duyệt trong khuôn khổ chương trình 20/11/2026.</label>
+        <p><button class="btn" type="submit">Gửi nội dung</button></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="page-mine" class="hidden">
+    <div class="section-head"><div><h2>Bài gửi của tôi</h2><p class="muted" id="myIdentity"></p></div><button class="btn danger" onclick="signOut()">Đăng xuất</button></div>
+    <div class="card"><div id="mineList"></div></div>
+  </section>
+
+  <section id="page-admin" class="hidden">
+    <div class="section-head"><div><h2>Quản trị chương trình</h2><p class="muted">Dành cho Ban tổ chức.</p></div><button class="btn danger" onclick="signOut()">Đăng xuất</button></div>
+    <div class="adminbar"><button class="btn" onclick="loadAdmin('PENDING')">Chờ duyệt</button><button class="btn light" onclick="loadAdmin('APPROVED')">Đã duyệt</button><button class="btn light" onclick="loadAdmin('REJECTED')">Từ chối</button><button class="btn light" onclick="loadStats()">Thống kê</button><button class="btn light" onclick="showPage('presentation')">Trình chiếu</button></div>
+    <div id="adminContent" class="card"></div>
+  </section>
+
+  <section id="page-presentation" class="hidden">
+    <div class="toolbar" style="justify-content:space-between;margin-bottom:12px"><div><h2>Trình chiếu Dấu ấn Tri Ân</h2><p class="muted small">Chỉ sử dụng nội dung đã duyệt và được chọn trình chiếu.</p></div><button class="btn light" onclick="showPage('admin')">Quay lại quản trị</button></div>
+    <div id="slide" class="slide"><div><div class="eyebrow">Cao đẳng Đắk Lắk · 20/11/2026</div><h2>DẤU ẤN TRI ÂN</h2><p>Người gieo tri thức – Người giữ yêu thương</p></div></div>
+    <div class="toolbar" style="justify-content:center;margin-top:14px"><button class="btn" onclick="previousSlide()">Trước</button><button class="btn gold" onclick="togglePlay()" id="playBtn">Tự động phát</button><button class="btn" onclick="nextSlide()">Tiếp theo</button><button class="btn light" onclick="document.documentElement.requestFullscreen?.()">Toàn màn hình</button></div>
+    <p class="small muted" style="text-align:center">Dùng Ctrl/Cmd + P để in hoặc lưu trang trình chiếu; cần tải riêng tệp media để chuẩn bị phương án offline.</p>
+  </section>
+</main>
+<footer class="footer">ĐOÀN TRƯỜNG CAO ĐẲNG ĐẮK LẮK<br><span class="small">DẤU ẤN TRI ÂN – 20/11/2026</span></footer>
+
+<script>
+/* THIẾT LẬP: thay 2 giá trị bên dưới bằng Project URL và anon/public key trong Supabase */
+const SUPABASE_URL = "https://cfuqphswulnnbsdrhqpy.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Vb8dthccOUi7r_kN94w8IQ_mcoYUtex";
+const BUCKET = "tri-an-media";
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+let db = null, currentUser = null, profile = null, slideItems = [], slideIndex = 0, playTimer = null;
+
+function configured(){ return SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.includes("YOUR_"); }
+function initDb(){
+  if(!configured()){ document.querySelectorAll("form").forEach(f=>f.querySelectorAll("button[type=submit]").forEach(b=>b.disabled=true)); return; }
+  db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+function el(id){return document.getElementById(id)}
+function msg(id,text,error=false){el(id).innerHTML=`<div class="notice ${error?'error':''}">${escapeHtml(text)}</div>`}
+function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showPage(page){
+  document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));
+  const target=el('page-'+page); if(target)target.classList.remove('hidden');
+  if(page==='wall')loadWall(); if(page==='gallery')loadGallery();
+  if(page==='mine')loadMine(); if(page==='admin')loadAdmin('PENDING');
+  if(page==='submit'&&!currentUser) {msg('submitMsg','Bạn cần đăng nhập trước khi gửi nội dung.',true); }
+  if(page==='presentation')loadPresentation();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+async function refreshSession(){
+  if(!db)return;
+  const {data:{session}}=await db.auth.getSession();
+  currentUser=session?.user||null;
+  if(currentUser){const {data}=await db.from('profiles').select('*').eq('id',currentUser.id).maybeSingle();profile=data||null;}
+  updateNav();
+}
+function updateNav(){
+  const n=el('accountNav');
+  if(!currentUser)n.textContent='Đăng nhập';
+  else n.textContent=profile?.role==='admin'?'Quản trị':'Tài khoản';
+  n.onclick=()=>showPage(!currentUser?'login':profile?.role==='admin'?'admin':'mine');
+}
+async function signOut(){await db.auth.signOut();currentUser=null;profile=null;updateNav();showPage('home')}
+el('registerForm').addEventListener('submit',async e=>{
+  e.preventDefault();if(!db)return msg('registerMsg','Chưa cấu hình Supabase.',true);
+  const f=new FormData(e.target), p=f.get('password');
+  if(p!==f.get('confirm_password'))return msg('registerMsg','Mật khẩu xác nhận chưa khớp.',true);
+  const email=String(f.get('email')).trim().toLowerCase();
+  const {data,error}=await db.auth.signUp({email,password:p,options:{data:{
+    full_name:f.get('full_name'),student_code:f.get('student_code'),faculty:f.get('faculty'),class_name:f.get('class_name'),union_name:f.get('union_name')
+  }}});
+  if(error)return msg('registerMsg',error.message,true);
+  msg('registerMsg','Đăng ký thành công. Hãy kiểm tra email để xác minh tài khoản trước khi đăng nhập.');
+  e.target.reset();
+});
+el('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();if(!db)return msg('loginMsg','Chưa cấu hình Supabase.',true);
+  const f=new FormData(e.target);const {error}=await db.auth.signInWithPassword({email:String(f.get('email')).trim().toLowerCase(),password:f.get('password')});
+  if(error)return msg('loginMsg',error.message,true);
+  await refreshSession();showPage(profile?.role==='admin'?'admin':'mine');
+});
+el('submissionForm').addEventListener('submit',async e=>{
+  e.preventDefault();if(!currentUser)return msg('submitMsg','Vui lòng đăng nhập trước.',true);
+  const f=new FormData(e.target), file=f.get('media');
+  if(file&&file.size>MAX_FILE_SIZE)return msg('submitMsg','Tệp vượt quá giới hạn 50 MB.',true);
+  let mediaUrl=null,mediaType=null;
+  if(file&&file.size){
+    const ext=file.name.split('.').pop().toLowerCase();
+    const path=`${currentUser.id}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
+    const {error:upErr}=await db.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});
+    if(upErr)return msg('submitMsg','Không tải được tệp: '+upErr.message,true);
+    const {data}=db.storage.from(BUCKET).getPublicUrl(path);mediaUrl=data.publicUrl;mediaType=file.type.startsWith('video/')?'video':'image';
+  }
+  const {error}=await db.from('submissions').insert({
+    user_id:currentUser.id,author_name:profile?.full_name||currentUser.user_metadata?.full_name||'Thành viên chương trình',
+    author_unit:profile?.union_name||currentUser.user_metadata?.union_name||'',
+    activity:String(f.get('activity')),teacher_name:String(f.get('teacher_name')||'').trim(),
+    title:String(f.get('title')).trim(),message:String(f.get('message')||'').trim(),media_url:mediaUrl,media_type:mediaType,
+    external_url:String(f.get('external_url')||'').trim()||null,status:'PENDING',consent:true
+  });
+  if(error)return msg('submitMsg','Không gửi được nội dung: '+error.message,true);
+  msg('submitMsg','Đã gửi thành công. Nội dung đang chờ Ban tổ chức duyệt.');e.target.reset();
+});
+async function fetchApproved(){
+  if(!db)return [];
+  const {data,error}=await db.from('submissions').select('id,activity,teacher_name,title,message,media_url,media_type,external_url,created_at,author_name,author_unit')
+    .eq('status','APPROVED').order('created_at',{ascending:false}).limit(150);
+  if(error){console.error(error);return []}return data||[];
+}
+function noteCard(x){
+  return `<article class="note"><span class="pill">${escapeHtml(x.activity)}</span><h3>${escapeHtml(x.title||'Lời tri ân')}</h3><p>${escapeHtml(x.message||'')}</p><footer>${escapeHtml(x.author_name||'Thành viên chương trình')}${x.author_unit?' · '+escapeHtml(x.author_unit):''}${x.teacher_name?' · Gửi tặng '+escapeHtml(x.teacher_name):''}</footer></article>`;
+}
+async function loadWall(){
+  const data=(await fetchApproved()).filter(x=>x.activity==='Bức tường Tri Ân'||x.activity==='Lá thư tri ân');
+  el('wall').innerHTML=data.length?data.map(noteCard).join(''):'<div class="card">Chưa có lời tri ân được công khai.</div>';
+}
+async function loadHome(){const data=(await fetchApproved()).filter(x=>x.message).slice(0,3);el('homeWall').innerHTML=data.length?data.map(noteCard).join(''):'<div class="card muted">Những lời tri ân được duyệt sẽ xuất hiện tại đây.</div>'}
+async function loadGallery(){
+  const data=(await fetchApproved()).filter(x=>x.media_url||x.external_url);
+  el('gallery').innerHTML=data.length?data.map(x=>{
+    let media=x.media_url?(x.media_type==='video'?`<video class="media" controls src="${escapeHtml(x.media_url)}"></video>`:`<img class="media" src="${escapeHtml(x.media_url)}" alt="${escapeHtml(x.title)}">`):'';
+    let link=x.external_url?`<p><a target="_blank" rel="noopener" href="${escapeHtml(x.external_url)}">Mở liên kết video</a></p>`:'';
+    return `<article class="card"><span class="pill">${escapeHtml(x.activity)}</span><h3>${escapeHtml(x.title)}</h3><p>${escapeHtml(x.message||'')}</p>${media}${link}</article>`;
+  }).join(''):'<div class="card">Chưa có hình ảnh hoặc video được duyệt.</div>';
+}
+async function loadMine(){
+  if(!currentUser)return showPage('login');
+  el('myIdentity').textContent=profile?.full_name||currentUser.email;
+  const {data,error}=await db.from('submissions').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});
+  if(error)return el('mineList').textContent=error.message;
+  el('mineList').innerHTML=data.length?data.map(x=>`<div class="item"><div><strong>${escapeHtml(x.title)}</strong><p>${escapeHtml(x.activity)} · ${new Date(x.created_at).toLocaleString('vi-VN')}</p><span class="pill">${({PENDING:'Chờ duyệt',APPROVED:'Đã duyệt',REJECTED:'Bị từ chối'})[x.status]||x.status}</span>${x.reject_reason?`<p class="small">Lý do: ${escapeHtml(x.reject_reason)}</p>`:''}</div></div>`).join(''):'Bạn chưa gửi nội dung nào.';
+}
+async function isAdmin(){return currentUser&&profile?.role==='admin'}
+async function loadAdmin(status='PENDING'){
+  if(!await isAdmin()){el('adminContent').textContent='Tài khoản không có quyền quản trị.';return;}
+  const {data,error}=await db.from('submissions').select('*,profiles(full_name,student_code,faculty,class_name,union_name)').eq('status',status).order('created_at',{ascending:false}).limit(200);
+  if(error)return el('adminContent').textContent=error.message;
+  el('adminContent').innerHTML=data.length?data.map(x=>{
+    const p=x.profiles||{};
+    return `<div class="item"><div><span class="pill">${escapeHtml(x.activity)}</span><strong>${escapeHtml(x.title)}</strong><p>${escapeHtml(x.message||'')}</p><p class="small muted">${escapeHtml(p.full_name||'')} · ${escapeHtml(p.student_code||'')} · ${escapeHtml(p.faculty||'')} · ${escapeHtml(p.union_name||'')}</p>${x.media_url?`<p><a target="_blank" rel="noopener" href="${escapeHtml(x.media_url)}">Mở tệp đính kèm</a></p>`:''}${x.external_url?`<p><a target="_blank" rel="noopener" href="${escapeHtml(x.external_url)}">Mở liên kết ngoài</a></p>`:''}</div><div class="item-actions">${status!=='APPROVED'?`<button class="btn" onclick="moderate('${x.id}','APPROVED')">Duyệt</button>`:''}${status!=='REJECTED'?`<button class="btn danger" onclick="moderate('${x.id}','REJECTED')">Từ chối</button>`:''}${status==='APPROVED'?`<button class="btn light" onclick="toggleFeatured('${x.id}',${!x.featured})">${x.featured?'Bỏ chọn chiếu':'Chọn trình chiếu'}</button>`:''}</div></div>`;
+  }).join(''):'Không có nội dung trong danh sách này.';
+}
+async function moderate(id,status){
+  let reason=null;if(status==='REJECTED'){reason=prompt('Lý do từ chối (có thể để trống):')||''}
+  const {error}=await db.from('submissions').update({status,reject_reason:reason}).eq('id',id);
+  if(error)alert(error.message);else loadAdmin(status);
+}
+async function toggleFeatured(id,value){
+  const {error}=await db.from('submissions').update({featured:value}).eq('id',id);
+  if(error)alert(error.message);else loadAdmin('APPROVED');
+}
+async function loadStats(){
+  if(!await isAdmin())return;
+  const {data,error}=await db.from('submissions').select('id,status,activity,profiles(faculty,union_name)');
+  if(error)return el('adminContent').textContent=error.message;
+  const unique=new Set(data.map(x=>x.profiles?.student_code).filter(Boolean));
+  const counts=(key)=>Object.entries(data.reduce((a,x)=>{let k=x.profiles?.[key]||'Chưa cập nhật';a[k]=(a[k]||0)+1;return a},{})).sort((a,b)=>b[1]-a[1]);
+  el('adminContent').innerHTML=`<div class="stats"><div class="card stat"><strong>${data.length}</strong>Tổng bài gửi</div><div class="card stat"><strong>${data.filter(x=>x.status==='PENDING').length}</strong>Chờ duyệt</div><div class="card stat"><strong>${data.filter(x=>x.status==='APPROVED').length}</strong>Đã duyệt</div><div class="card stat"><strong>${data.filter(x=>x.status==='REJECTED').length}</strong>Bị từ chối</div></div><div class="grid section"><div class="card"><h3>Theo khoa</h3>${counts('faculty').map(([k,v])=>`<p>${escapeHtml(k)}: <strong>${v}</strong></p>`).join('')}</div><div class="card"><h3>Theo chi đoàn</h3>${counts('union_name').map(([k,v])=>`<p>${escapeHtml(k)}: <strong>${v}</strong></p>`).join('')}</div><div class="card"><h3>Theo hoạt động</h3>${Object.entries(data.reduce((a,x)=>(a[x.activity]=(a[x.activity]||0)+1,a),{})).map(([k,v])=>`<p>${escapeHtml(k)}: <strong>${v}</strong></p>`).join('')}</div></div><p class="small muted">Thống kê tính theo số bài gửi, không phải số người tham gia duy nhất.</p><button class="btn light" onclick="exportCsv()">Xuất CSV</button>`;
+}
+async function exportCsv(){
+  const {data,error}=await db.from('submissions').select('id,activity,title,status,created_at,teacher_name,message');
+  if(error)return alert(error.message);
+  const rows=[['id','activity','title','status','created_at','teacher_name','message'],...(data||[]).map(x=>[x.id,x.activity,x.title,x.status,x.created_at,x.teacher_name,x.message])];
+  const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='thong-ke-dau-an-tri-an.csv';a.click();URL.revokeObjectURL(a.href);
+}
+async function loadPresentation(){
+  if(!await isAdmin()){el('slide').innerHTML='<div>Chỉ tài khoản quản trị được mở trình chiếu.</div>';return;}
+  const {data,error}=await db.from('submissions').select('id,title,message,activity,teacher_name,media_url,media_type').eq('status','APPROVED').eq('featured',true).order('created_at',{ascending:true});
+  if(error)return;
+  slideItems=data||[];slideIndex=0;renderSlide();
+}
+function renderSlide(){
+  const x=slideItems[slideIndex];if(!x){el('slide').innerHTML='<div><h2>DẤU ẤN TRI ÂN</h2><p>Chưa có nội dung được chọn trình chiếu.</p></div>';return;}
+  let media=x.media_url?(x.media_type==='video'?`<video controls autoplay class="media" style="max-height:42vh" src="${escapeHtml(x.media_url)}"></video>`:`<img class="media" style="max-height:42vh" src="${escapeHtml(x.media_url)}">`):'';
+  el('slide').innerHTML=`<div><div class="eyebrow">${escapeHtml(x.activity)} · 20/11/2026</div><h2>${escapeHtml(x.title)}</h2><p>${escapeHtml(x.message||'')}</p>${media}<div>${x.teacher_name?'Gửi tặng '+escapeHtml(x.teacher_name):''}</div></div>`;
+}
+function nextSlide(){if(slideItems.length){slideIndex=(slideIndex+1)%slideItems.length;renderSlide()}}
+function previousSlide(){if(slideItems.length){slideIndex=(slideIndex-1+slideItems.length)%slideItems.length;renderSlide()}}
+function togglePlay(){if(playTimer){clearInterval(playTimer);playTimer=null;el('playBtn').textContent='Tự động phát'}else{playTimer=setInterval(nextSlide,8000);el('playBtn').textContent='Tạm dừng'}}
+window.addEventListener('beforeunload',()=>{if(playTimer)clearInterval(playTimer)});
+(async function start(){
+  initDb();
+  if(!db){const n=document.createElement('div');n.className='notice';n.style.margin='16px auto';n.style.maxWidth='1180px';n.textContent='Website chưa kết nối Supabase. Mở index.html và thay SUPABASE_URL, SUPABASE_ANON_KEY theo hướng dẫn trong README.md.';document.body.insertBefore(n,document.querySelector('main'));showPage('home');return;}
+  await refreshSession();await loadHome();showPage('home');
+})();
+</script>
+</body>
+</html>
